@@ -138,7 +138,7 @@ app.post('/sampleNotifications', async (req, res) => {
 
         console.log(sampleNotifications)
 
-        const result = await collection.insertMany(sampleNotifications);
+        const result = await collection.insertMany({sampleNotifications});
         console.log(`Sample notifications inserted with _ids: ${result.insertedIds}`);
         res.status(201).send({ message: 'Sample notifications saved successfully', ids: result.insertedIds });
     } catch (error) {
