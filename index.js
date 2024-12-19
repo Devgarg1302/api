@@ -134,9 +134,7 @@ app.get('/sampleNotifications', async (req, res) => {
         const database = client.db('scheduleDB');
         const collection = database.collection('notifyData');
 
-        const sampleNotifications = [
-            { message: 'Take Medicine', date: '2024-12-15', time: '17:30' },
-        ];
+        const sampleNotifications = req.body;
 
         const result = await collection.insertMany(sampleNotifications);
         console.log(`Sample notifications inserted with _ids: ${result.insertedIds}`);
