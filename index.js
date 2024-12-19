@@ -134,11 +134,11 @@ app.post('/sampleNotifications', async (req, res) => {
         const database = client.db('scheduleDB');
         const collection = database.collection('notifyData');
 
-        const sampleNotifications = req.body;
+        const {sampleNotifications} = req.body;
 
         console.log(sampleNotifications)
 
-        const result = await collection.insertMany([sampleNotifications]);
+        const result = await collection.insertMany(sampleNotifications);
         console.log(`Sample notifications inserted with _ids: ${result.insertedIds}`);
         res.status(201).send({ message: 'Sample notifications saved successfully', ids: result.insertedIds });
     } catch (error) {
